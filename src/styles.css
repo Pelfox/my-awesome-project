@@ -1,0 +1,319 @@
+:root {
+    --bg: #fafafb;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --muted: #5b6574;
+    --accent: #2563eb;
+    --border: #e6e8ee;
+    --radius: 14px;
+    --space: clamp(16px, 2.5vw, 28px);
+    --maxw: 980px;
+    --focus: 2px solid #2563eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* ---------- Шапка ---------- */
+header {
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+}
+
+header > * {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 12px var(--space);
+    display: flex;
+    align-items: center;
+    gap: var(--space);
+}
+
+/* Навигация */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: color .15s ease, background-color .15s ease;
+}
+
+nav a:hover {
+    color: var(--text);
+    background: #f4f6fb;
+}
+
+/* ---------- Контент ---------- */
+main {
+    max-width: var(--maxw);
+    margin: 40px auto;
+    padding: 0 var(--space);
+    display: grid;
+    gap: calc(var(--space) * .9);
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+/* Секции */
+section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: calc(var(--space) * .9);
+}
+
+section a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    background: #f7f9ff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background-color .15s ease, border-color .15s ease, transform .05s ease;
+}
+
+section a:hover {
+    background: #eef3ff;
+    border-color: #dfe6f5;
+}
+
+section a:active {
+    transform: translateY(1px);
+}
+
+/* ---------- Футер ---------- */
+footer {
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+}
+
+footer p {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 10px var(--space);
+    color: var(--muted);
+}
+
+/* Лого/название в шапке */
+header > a[href="/"] {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+header > a[href="/"]:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Хлебные крошки */
+main > nav[aria-label="Хлебные крошки"] {
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+main > nav[aria-label="Хлебные крошки"] a {
+    color: inherit;
+    text-decoration: none;
+}
+
+main > nav[aria-label="Хлебные крошки"] a:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+main > nav[aria-label="Хлебные крошки"] span {
+    color: var(--text);
+    font-weight: 600;
+}
+
+main > button[onclick="dialogOpen()"] {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: #f7f9ff;
+    color: var(--accent);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, transform .05s ease;
+}
+
+main > button[onclick="dialogOpen()"]:hover {
+    background: #eef3ff;
+    border-color: #dfe6f5;
+}
+
+main > button[onclick="dialogOpen()"]:active {
+    transform: translateY(1px);
+}
+
+/* Активный пункт меню для этой страницы */
+nav a[href="feedback.html"] {
+    color: var(--text);
+    background: #eef3ff;
+    border-radius: 8px;
+}
+
+/* Диалог */
+dialog {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0;
+    width: min(640px, calc(100% - 32px));
+    max-width: 100%;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 10px 30px -15px rgba(2, 6, 23, .15);
+}
+
+dialog::backdrop {
+    background: rgba(15, 23, 42, .35);
+    backdrop-filter: blur(2px);
+}
+
+/* Заголовок внутри диалога */
+dialog h3 {
+    margin: 0;
+    padding: 16px 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Форма */
+#feedback_form {
+    display: grid;
+    gap: 12px;
+    padding: 16px 18px 18px;
+}
+
+/* Метки и поля */
+#feedback_form label {
+    font-size: .95rem;
+    color: var(--muted);
+}
+
+#feedback_form input,
+#feedback_form select,
+#feedback_form textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+#feedback_form textarea {
+    resize: vertical;
+}
+
+/* Фокус */
+#feedback_form :where(input, select, textarea):focus {
+    border-color: #cfd6e6;
+    box-shadow: 0 0 0 3px #e8edfb;
+}
+
+/* Валидация (нативная) */
+#feedback_form :where(input, select, textarea):required:invalid {
+    border-color: #f1c0c0;
+    background: #fff7f7;
+}
+
+#feedback_form :where(input, select, textarea):required:invalid:focus {
+    box-shadow: 0 0 0 3px #ffe9e9;
+}
+
+#feedback_form :where(input, select, textarea):valid {
+    border-color: #dfe6f5;
+}
+
+/* Ряд с кнопками отправки/закрытия */
+#feedback_form > div {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+/* Кнопки в форме */
+#feedback_form button {
+    appearance: none;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background-color .15s ease, border-color .15s ease, transform .05s ease;
+}
+
+/* Основная (Отправить) */
+#feedback_form button[type="submit"] {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+
+#feedback_form button[type="submit"]:hover {
+    background: #1f55c8;
+    border-color: #1f55c8;
+}
+
+#feedback_form button[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+/* Вторичная (Закрыть форму) */
+#feedback_form button[type="button"] {
+    background: #f7f9ff;
+    color: var(--accent);
+}
+
+#feedback_form button[type="button"]:hover {
+    background: #eef3ff;
+    border-color: #dfe6f5;
+}
+
+#feedback_form button[type="button"]:active {
+    transform: translateY(1px);
+}
