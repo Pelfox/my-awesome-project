@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Обратная связь - Название моего сайта</title>
+    <meta content="Краткое описание страницы 'Обратная связь' моего сайта" name="description">
+    <link href="../assets/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="./scripts/form.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<style>
+    dialog#feedback_dialog {
+        border: #101010 solid 1px;
+        border-radius: 12px;
+        width: 384px;
+    }
+
+    #feedback_dialog_title {
+        text-align: center;
+    }
+
+    #feedback_form label {
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    #feedback_form input,
+    #feedback_form select,
+    #feedback_form textarea {
+        display: block;
+        margin-bottom: 10px;
+        width: 15vw;
+    }
+</style>
+<body>
+<header>
+    <a href="/">Логотип или название сайта</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <nav aria-label="Хлебные крошки">
+        <a href="index.html">Главная</a> →
+        <span>Обратная связь</span>
+    </nav>
+    <h1>Обратная связь</h1>
+    <button onclick="dialogOpen()">Оставить свой отзыв</button>
+    <dialog id="feedback_dialog" aria-describedby="feedback_dialog_title">
+        <h3 id="feedback_dialog_title">Обратная связь</h3>
+        <form method="dialog" id="feedback_form" novalidate>
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" required minlength="2" />
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required />
+            <label for="theme">Тема</label>
+            <select name="theme" id="theme" required>
+                <option value="">Выберите тему</option>
+                <option value="question">Вопрос</option>
+                <option value="order">Заказ</option>
+            </select>
+            <label for="message">Сообщение</label>
+            <textarea name="message" id="message" rows="4" required></textarea>
+            <div>
+                <button type="submit">Отправить</button>
+                <button type="button" onclick="dialogClose()">Закрыть форму</button>
+            </div>
+        </form>
+    </dialog>
+</main>
+<footer>
+    <p>&copy; 2025 Название моего сайта. Все права защищены.</p>
+    <p>Телефон: +7 (123) 456-78-90</p>
+</footer>
+</body>
+</html>
