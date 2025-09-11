@@ -183,13 +183,6 @@ main > button[onclick="dialogOpen()"]:active {
     transform: translateY(1px);
 }
 
-/* Активный пункт меню для этой страницы */
-nav a[href="feedback.html"] {
-    color: var(--text);
-    background: #eef3ff;
-    border-radius: 8px;
-}
-
 /* Диалог */
 dialog {
     border: 1px solid var(--border);
