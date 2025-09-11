@@ -310,3 +310,9 @@ dialog h3 {
 #feedback_form button[type="button"]:active {
     transform: translateY(1px);
 }
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
